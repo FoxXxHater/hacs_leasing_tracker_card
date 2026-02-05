@@ -46,7 +46,7 @@ Dort sehen Sie welche Sensoren die Card gefunden hat.
 
 ### Jeder Vertrag = Eigene Card
 
-**Beispiel: Sei haben 2 Autos**
+**Beispiel: Sie haben 2 Autos**
 
 #### Auto 1: BMW Leasing
 Integration-Config: Name = "BMW Leasing"
