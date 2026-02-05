@@ -81,6 +81,11 @@ class LeasingTrackerCard extends HTMLElement {
   }
 
   renderHeader(sensors) {
+    // Wenn show_title explizit auf false gesetzt ist, keinen Header anzeigen
+    if (this._config.show_title === false) {
+      return '';
+    }
+    
     const status = sensors.status?.state || 'Unbekannt';
     const statusColor = this.getStatusColor(status);
     
@@ -434,7 +439,8 @@ class LeasingTrackerCard extends HTMLElement {
   static getStubConfig() {
     return {
       entity: 'sensor.mein_leasing_status',
-      title: 'Leasing Tracker'
+      title: 'Leasing Tracker',
+      show_title: true
     };
   }
 }
@@ -449,7 +455,7 @@ window.customCards.push({
 });
 
 console.info(
-  '%c  LEASING-TRACKER-CARD  %c v1.0.1 ',
+  '%c  LEASING-TRACKER-CARD  %c v1.0.2 ',
   'color: white; background: #4A90E2; font-weight: 700;',
   'color: #4A90E2; background: white; font-weight: 700;'
 );
