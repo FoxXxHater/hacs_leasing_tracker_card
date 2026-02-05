@@ -186,6 +186,9 @@ show_average_day: false
 | `show_average_month` | `true` | Ø pro Monat |
 | `show_remaining_days` | `true` | Verbleibende Tage |
 | `show_progress` | `true` | Fortschrittsbalken |
+| `columns` |  `2` | Anzahl der Spalten
+| `metric_background` |`rgba(0, 0, 0, 0.5)` | Hintergrundfarbe der Einzelnen Elemente
+| `metric_background_hover` | `rgba(0, 0, 0, 0.7)` | Hintergrundfarbe der einzelnen Elemente beim drüber fahren mit der Maus
 
 ## 🎨 Farbcodierung
 

@@ -66,14 +66,16 @@ class LeasingTrackerCard extends HTMLElement {
     // Custom Styles aus Config
     const metricBg = this._config.metric_background || '';
     const metricBgHover = this._config.metric_background_hover || '';
-    const customStyles = (metricBg || metricBgHover) ? `
+    const columns = this._config.columns || 2;
+    const customStyles = `
       <style>
         :host {
+          --leasing-columns: ${columns};
           ${metricBg ? `--leasing-metric-bg: ${metricBg};` : ''}
           ${metricBgHover ? `--leasing-metric-bg-hover: ${metricBgHover};` : ''}
         }
       </style>
-    ` : '';
+    `;
 
     this.shadowRoot.innerHTML = `
       ${this.getStyles()}
@@ -406,8 +408,8 @@ class LeasingTrackerCard extends HTMLElement {
         }
         
         .metrics {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          display: grid !important;
+          grid-template-columns: repeat(var(--leasing-columns, 2), 1fr) !important;
           gap: 12px;
           margin-bottom: 16px;
         }
@@ -533,7 +535,7 @@ window.customCards.push({
 });
 
 console.info(
-  '%c  LEASING-TRACKER-CARD  %c v1.0.6 ',
+  '%c  LEASING-TRACKER-CARD  %c v1.0.8 ',
   'color: white; background: #4A90E2; font-weight: 700;',
   'color: #4A90E2; background: white; font-weight: 700;'
 );
