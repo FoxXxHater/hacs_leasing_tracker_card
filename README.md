@@ -175,6 +175,8 @@ show_average_day: false
 |--------|---------|--------------|
 | `entity` | **erforderlich** | Status-Sensor |
 | `title` | `Leasing Tracker` | Titel |
+| `show_title` | `true` | Titel anzeigen/ausblenden |
+| `show_status` | `true` | Status-Badge anzeigen/ausblenden |
 | `show_km_remaining_month` | `true` | Verbleibend (Monat) |
 | `show_km_remaining_year` | `true` | Verbleibend (Jahr) |
 | `show_km_remaining_total` | `true` | Verbleibend (Gesamt) |
