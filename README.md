@@ -18,11 +18,16 @@ Eine custom Lovelace Card für die Leasing Tracker Integration.
   </a>
 </p>
 
-## 📸 Screenshot
+## 📸 Screenshots
 
-<p align="center">
+<p align="left">
   <img src="SCREENSHOT.png" alt="Dashboard Screenshot" high="15%">
 </p>
+- 1. Version auf meinem Test System
+<p align="right">
+  <img src="SCREENSHOT-2.png" alt="Dashboard Screenshot 2" high="15%">
+</p>
+- Auf meinem Live System
 
 ## ✨ Features
 
