@@ -63,8 +63,21 @@ class LeasingTrackerCard extends HTMLElement {
       console.log('Leasing Tracker Card - Basisname:', baseName);
     }
 
+    // Custom Styles aus Config
+    const metricBg = this._config.metric_background || '';
+    const metricBgHover = this._config.metric_background_hover || '';
+    const customStyles = (metricBg || metricBgHover) ? `
+      <style>
+        :host {
+          ${metricBg ? `--leasing-metric-bg: ${metricBg};` : ''}
+          ${metricBgHover ? `--leasing-metric-bg-hover: ${metricBgHover};` : ''}
+        }
+      </style>
+    ` : '';
+
     this.shadowRoot.innerHTML = `
       ${this.getStyles()}
+      ${customStyles}
       <ha-card>
         ${this.renderHeader(sensors)}
         ${this.renderContent(sensors)}
@@ -403,14 +416,14 @@ class LeasingTrackerCard extends HTMLElement {
           display: flex;
           gap: 12px;
           padding: 12px;
-          background: var(--secondary-background-color);
+          background: var(--leasing-metric-bg, var(--secondary-background-color));
           border-radius: 8px;
           cursor: pointer;
           transition: all 0.2s;
         }
         
         .metric:hover {
-          background: var(--divider-color);
+          background: var(--leasing-metric-bg-hover, var(--divider-color));
           transform: translateY(-2px);
         }
         
@@ -456,7 +469,7 @@ class LeasingTrackerCard extends HTMLElement {
         .progress-section {
           margin-top: 8px;
           padding: 16px;
-          background: var(--secondary-background-color);
+          background: var(--leasing-metric-bg, var(--secondary-background-color));
           border-radius: 8px;
         }
         
@@ -520,7 +533,7 @@ window.customCards.push({
 });
 
 console.info(
-  '%c  LEASING-TRACKER-CARD  %c v1.0.5 ',
+  '%c  LEASING-TRACKER-CARD  %c v1.0.6 ',
   'color: white; background: #4A90E2; font-weight: 700;',
   'color: #4A90E2; background: white; font-weight: 700;'
 );
