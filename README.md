@@ -258,9 +258,9 @@ show_remaining_days: false
 - **Leasing Tracker Integration:** v1.1.3+
 
 ## Getestet mit:
-- **Core:** 2026.1.3
+- **Core:** 2026.1.2 und 2026.1.3
 - **Supervisor:** 2026.01.1
-- **OS:** 17.0
+- **OS:** 16.x und 17.0
 - **Frontend:** 20260107.2
 
 
