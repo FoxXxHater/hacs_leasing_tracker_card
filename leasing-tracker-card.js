@@ -81,14 +81,34 @@ class LeasingTrackerCard extends HTMLElement {
   }
 
   renderHeader(sensors) {
-    // Wenn show_title explizit auf false gesetzt ist, keinen Header anzeigen
-    if (this._config.show_title === false) {
+    const showTitle = this._config.show_title !== false;
+    const showStatus = this._config.show_status !== false;
+    
+    console.log('Leasing Tracker - Header Config:', { showTitle, showStatus });
+    
+    // Wenn beides ausgeblendet ist, keinen Header anzeigen
+    if (!showTitle && !showStatus) {
       return '';
     }
     
     const status = sensors.status?.state || 'Unbekannt';
     const statusColor = this.getStatusColor(status);
     
+    // Nur Status ohne Titel
+    if (!showTitle && showStatus) {
+      return `
+        <div class="card-header status-only">
+          <div class="icon-wrapper" style="background: ${statusColor}20;">
+            <ha-icon icon="mdi:car-info" style="color: ${statusColor};"></ha-icon>
+          </div>
+          <div class="status-badge" style="background: ${statusColor}30; color: ${statusColor};">
+            ${status}
+          </div>
+        </div>
+      `;
+    }
+    
+    // Titel mit oder ohne Status
     return `
       <div class="card-header">
         <div class="icon-wrapper" style="background: ${statusColor}20;">
@@ -96,9 +116,11 @@ class LeasingTrackerCard extends HTMLElement {
         </div>
         <div class="header-text">
           <div class="title">${this._config.title || 'Leasing Tracker'}</div>
-          <div class="status-badge" style="background: ${statusColor}30; color: ${statusColor};">
-            ${status}
-          </div>
+          ${showStatus ? `
+            <div class="status-badge" style="background: ${statusColor}30; color: ${statusColor};">
+              ${status}
+            </div>
+          ` : ''}
         </div>
       </div>
     `;
@@ -297,6 +319,14 @@ class LeasingTrackerCard extends HTMLElement {
           border-bottom: 1px solid var(--divider-color);
         }
         
+        .card-header.status-only {
+          gap: 12px;
+        }
+        
+        .card-header.status-only .status-badge {
+          font-size: 1em;
+        }
+        
         .icon-wrapper {
           width: 56px;
           height: 56px;
@@ -440,7 +470,8 @@ class LeasingTrackerCard extends HTMLElement {
     return {
       entity: 'sensor.mein_leasing_status',
       title: 'Leasing Tracker',
-      show_title: true
+      show_title: true,
+      show_status: true
     };
   }
 }
@@ -455,7 +486,7 @@ window.customCards.push({
 });
 
 console.info(
-  '%c  LEASING-TRACKER-CARD  %c v1.0.2 ',
+  '%c  LEASING-TRACKER-CARD  %c v1.0.4 ',
   'color: white; background: #4A90E2; font-weight: 700;',
   'color: #4A90E2; background: white; font-weight: 700;'
 );
