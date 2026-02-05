@@ -2,6 +2,7 @@ class LeasingTrackerCard extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: 'open' });
+    this._initialized = false;
   }
 
   setConfig(config) {
@@ -9,12 +10,42 @@ class LeasingTrackerCard extends HTMLElement {
       throw new Error('Bitte definiere eine Entity');
     }
     this._config = config;
-    this.render();
+    this._initialized = false;
+    if (this._hass) {
+      this.render();
+    }
   }
 
   set hass(hass) {
+    const oldHass = this._hass;
     this._hass = hass;
-    this.render();
+    
+    // Nur rendern wenn nötig
+    if (!this._config) return;
+    
+    // Erstes Render oder relevante Entity hat sich geändert
+    if (!this._initialized || this._hasRelevantChange(oldHass, hass)) {
+      this.render();
+    }
+  }
+
+  _hasRelevantChange(oldHass, newHass) {
+    if (!oldHass) return true;
+    
+    const baseEntity = this._config.entity;
+    const baseName = baseEntity.replace('sensor.', '').replace(/_status$/, '');
+    
+    // Prüfe ob sich relevante Entities geändert haben
+    for (const entityId of Object.keys(newHass.states)) {
+      if (entityId.includes(baseName)) {
+        const oldState = oldHass.states[entityId];
+        const newState = newHass.states[entityId];
+        if (!oldState || oldState.state !== newState.state) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 
   render() {
@@ -26,8 +57,11 @@ class LeasingTrackerCard extends HTMLElement {
     // Finde alle Sensoren
     const sensors = this.findSensors(baseName);
     
-    // Debug: Zeige was gefunden wurde
-    console.log('Leasing Tracker Card - Gefundene Sensoren:', sensors);
+    // Debug: Nur einmal loggen
+    if (!this._initialized) {
+      console.log('Leasing Tracker Card - Gefundene Sensoren:', sensors);
+      console.log('Leasing Tracker Card - Basisname:', baseName);
+    }
 
     this.shadowRoot.innerHTML = `
       ${this.getStyles()}
@@ -46,6 +80,8 @@ class LeasingTrackerCard extends HTMLElement {
         }
       });
     });
+    
+    this._initialized = true;
   }
 
   findSensors(baseName) {
@@ -83,8 +119,6 @@ class LeasingTrackerCard extends HTMLElement {
   renderHeader(sensors) {
     const showTitle = this._config.show_title !== false;
     const showStatus = this._config.show_status !== false;
-    
-    console.log('Leasing Tracker - Header Config:', { showTitle, showStatus });
     
     // Wenn beides ausgeblendet ist, keinen Header anzeigen
     if (!showTitle && !showStatus) {
@@ -486,7 +520,7 @@ window.customCards.push({
 });
 
 console.info(
-  '%c  LEASING-TRACKER-CARD  %c v1.0.4 ',
+  '%c  LEASING-TRACKER-CARD  %c v1.0.5 ',
   'color: white; background: #4A90E2; font-weight: 700;',
   'color: #4A90E2; background: white; font-weight: 700;'
 );
