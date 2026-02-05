@@ -36,7 +36,7 @@ Eine custom Lovelace Card für die Leasing Tracker Integration.
 - 🎨 **Farbcodierung** - Grün/Gelb/Rot Status
 - 📱 **Responsive** - Funktioniert überall
 
-## Wichtig
+## ⚠️ Wichtig
 
 Diese Card benötigt die <a href="https://github.com/foxxxhater/hacs_leasing_tracker">**Leasing Tracker Integration**</a>!
 
