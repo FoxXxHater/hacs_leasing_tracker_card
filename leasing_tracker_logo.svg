@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <!-- Gradient for the speedometer arc -->
+    <linearGradient id="statusGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="50%" style="stop-color:#eab308"/>
+      <stop offset="100%" style="stop-color:#ef4444"/>
+    </linearGradient>
+    
+    <!-- Main blue gradient -->
+    <linearGradient id="blueGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#1d4ed8"/>
+    </linearGradient>
+    
+    <!-- Shadow filter -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-opacity="0.25"/>
+    </filter>
+    
+    <!-- Glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="256" cy="256" r="240" fill="#0f172a" filter="url(#shadow)"/>
+  
+  <!-- Outer ring -->
+  <circle cx="256" cy="256" r="220" fill="none" stroke="#1e293b" stroke-width="8"/>
+  
+  <!-- Status arc (speedometer style) - bottom half -->
+  <path d="M 76 256 A 180 180 0 0 1 436 256" 
+        fill="none" 
+        stroke="url(#statusGradient)" 
+        stroke-width="16" 
+        stroke-linecap="round"
+        opacity="0.9"/>
+  
+  <!-- Tick marks on the arc -->
+  <g stroke="#475569" stroke-width="2">
+    <line x1="96" y1="256" x2="116" y2="256"/>
+    <line x1="116" y1="176" x2="132" y2="188"/>
+    <line x1="176" y1="116" x2="188" y2="132"/>
+    <line x1="256" y1="96" x2="256" y2="116"/>
+    <line x1="336" y1="116" x2="324" y2="132"/>
+    <line x1="396" y1="176" x2="380" y2="188"/>
+    <line x1="416" y1="256" x2="396" y2="256"/>
+  </g>
+  
+  <!-- Car silhouette - stylized side view -->
+  <g transform="translate(256, 280)" filter="url(#glow)">
+    <!-- Car body -->
+    <path d="M -100 0 
+             L -90 0 
+             L -80 -25 
+             Q -70 -45 -40 -50 
+             L 40 -50 
+             Q 70 -45 80 -25 
+             L 90 0 
+             L 100 0 
+             L 100 20 
+             L -100 20 
+             Z" 
+          fill="url(#blueGradient)"/>
+    
+    <!-- Windows -->
+    <path d="M -65 -20 
+             Q -55 -40 -35 -42 
+             L -5 -42 
+             L -5 -20 
+             Z" 
+          fill="#60a5fa" opacity="0.6"/>
+    <path d="M 5 -42 
+             L 45 -42 
+             Q 60 -40 65 -20 
+             L 5 -20 
+             Z" 
+          fill="#60a5fa" opacity="0.6"/>
+    
+    <!-- Wheels -->
+    <circle cx="-55" cy="20" r="22" fill="#1e293b"/>
+    <circle cx="-55" cy="20" r="14" fill="#475569"/>
+    <circle cx="-55" cy="20" r="6" fill="#1e293b"/>
+    
+    <circle cx="55" cy="20" r="22" fill="#1e293b"/>
+    <circle cx="55" cy="20" r="14" fill="#475569"/>
+    <circle cx="55" cy="20" r="6" fill="#1e293b"/>
+    
+    <!-- Headlights -->
+    <ellipse cx="95" cy="-5" rx="8" ry="5" fill="#fbbf24"/>
+    <ellipse cx="-95" cy="-5" rx="8" ry="5" fill="#ef4444"/>
+  </g>
+  
+  <!-- Needle/Indicator pointing to green zone -->
+  <g transform="translate(256, 256)">
+    <line x1="0" y1="0" x2="-140" y2="0" 
+          stroke="#22c55e" 
+          stroke-width="4" 
+          stroke-linecap="round"
+          transform="rotate(-15)"/>
+    <circle cx="0" cy="0" r="12" fill="#22c55e"/>
+    <circle cx="0" cy="0" r="6" fill="#0f172a"/>
+  </g>
+  
+  <!-- KM text indicator -->
+  <text x="256" y="200" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="24" 
+        font-weight="bold" 
+        fill="#94a3b8" 
+        text-anchor="middle">KM</text>
+  
+  <!-- Home Assistant icon hint (simplified house) -->
+  <g transform="translate(256, 410)">
+    <path d="M 0 -15 L 15 0 L 15 15 L -15 15 L -15 0 Z" 
+          fill="none" 
+          stroke="#3b82f6" 
+          stroke-width="3"/>
+    <path d="M 0 -20 L -20 0 M 0 -20 L 20 0" 
+          fill="none" 
+          stroke="#3b82f6" 
+          stroke-width="3" 
+          stroke-linecap="round"/>
+  </g>
+</svg>

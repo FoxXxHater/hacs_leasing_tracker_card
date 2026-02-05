@@ -1,6 +1,28 @@
 # 🚗 Leasing Tracker Card
 
-Eine schöne custom Lovelace Card für die Leasing Tracker Integration.
+Eine custom Lovelace Card für die Leasing Tracker Integration.
+
+<p align="center">
+  <img src="banner.svg" alt="Leasing Tracker Banner" width="100%">
+</p>
+
+<p align="center">
+  <a href="https://github.com/foxxxhater/hacs_leasing_tracker/releases">
+    <img src="https://img.shields.io/github/release/foxxxhater/hacs_leasing_tracker_card.svg?style=flat-square" alt="GitHub Release">
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/github/license/foxxxhater/hacs_leasing_tracker_card.svg?style=flat-square" alt="License">
+  </a>
+  <a href="https://github.com/hacs/integration">
+    <img src="https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=flat-square" alt="HACS">
+  </a>
+</p>
+
+## 📸 Screenshot
+
+<p align="center">
+  <img src="SCREENSHOT.png" alt="Dashboard Screenshot" high="15%">
+</p>
 
 ## ✨ Features
 
@@ -232,6 +254,13 @@ show_remaining_days: false
 
 - **Home Assistant:** 2023.x+
 - **Leasing Tracker Integration:** v1.1.3+
+
+## Getestet mit:
+- **Core:** 2026.1.3
+- **Supervisor:** 2026.01.1
+- **OS:** 17.0
+- **Frontend:** 20260107.2
+
 
 ## Support
 

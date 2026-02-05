@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 640">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="50%" style="stop-color:#1e293b"/>
+      <stop offset="100%" style="stop-color:#0f172a"/>
+    </linearGradient>
+    
+    <!-- Status gradient for decorative arc -->
+    <linearGradient id="statusGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#22c55e"/>
+      <stop offset="50%" style="stop-color:#eab308"/>
+      <stop offset="100%" style="stop-color:#ef4444"/>
+    </linearGradient>
+    
+    <!-- Blue accent gradient -->
+    <linearGradient id="blueAccent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#3b82f6"/>
+      <stop offset="100%" style="stop-color:#60a5fa"/>
+    </linearGradient>
+    
+    <!-- Glow filter -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    
+    <!-- Subtle shadow -->
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-opacity="0.3"/>
+    </filter>
+    
+    <!-- Pattern for background texture -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e3a5f" stroke-width="0.5" opacity="0.3"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1280" height="640" fill="url(#bgGradient)"/>
+  
+  <!-- Grid pattern overlay -->
+  <rect width="1280" height="640" fill="url(#grid)" opacity="0.5"/>
+  
+  <!-- Decorative circles in background -->
+  <circle cx="100" cy="320" r="300" fill="none" stroke="#1e3a5f" stroke-width="1" opacity="0.3"/>
+  <circle cx="100" cy="320" r="350" fill="none" stroke="#1e3a5f" stroke-width="1" opacity="0.2"/>
+  <circle cx="1180" cy="320" r="250" fill="none" stroke="#1e3a5f" stroke-width="1" opacity="0.3"/>
+  
+  <!-- Decorative status arc (large, background) -->
+  <path d="M 50 500 Q 200 200 500 180" 
+        fill="none" 
+        stroke="url(#statusGrad)" 
+        stroke-width="6" 
+        stroke-linecap="round"
+        opacity="0.4"/>
+  
+  <!-- Logo area (left side) -->
+  <g transform="translate(200, 320)">
+    <!-- Outer ring -->
+    <circle cx="0" cy="0" r="130" fill="#0f172a" stroke="#1e293b" stroke-width="4"/>
+    
+    <!-- Status arc -->
+    <path d="M -100 20 A 100 100 0 0 1 100 20" 
+          fill="none" 
+          stroke="url(#statusGrad)" 
+          stroke-width="10" 
+          stroke-linecap="round"/>
+    
+    <!-- Car silhouette -->
+    <g transform="translate(0, 20)" filter="url(#glow)">
+      <path d="M -60 0 
+               L -54 0 
+               L -48 -15 
+               Q -42 -27 -24 -30 
+               L 24 -30 
+               Q 42 -27 48 -15 
+               L 54 0 
+               L 60 0 
+               L 60 12 
+               L -60 12 
+               Z" 
+            fill="url(#blueAccent)"/>
+      
+      <!-- Windows -->
+      <path d="M -39 -12 Q -33 -24 -21 -25 L -3 -25 L -3 -12 Z" fill="#60a5fa" opacity="0.5"/>
+      <path d="M 3 -25 L 27 -25 Q 36 -24 39 -12 L 3 -12 Z" fill="#60a5fa" opacity="0.5"/>
+      
+      <!-- Wheels -->
+      <circle cx="-33" cy="12" r="13" fill="#1e293b"/>
+      <circle cx="-33" cy="12" r="8" fill="#475569"/>
+      <circle cx="33" cy="12" r="13" fill="#1e293b"/>
+      <circle cx="33" cy="12" r="8" fill="#475569"/>
+    </g>
+    
+    <!-- Needle -->
+    <line x1="0" y1="0" x2="-80" y2="0" 
+          stroke="#22c55e" 
+          stroke-width="3" 
+          stroke-linecap="round"
+          transform="rotate(-25)"/>
+    <circle cx="0" cy="0" r="8" fill="#22c55e"/>
+    <circle cx="0" cy="0" r="4" fill="#0f172a"/>
+    
+    <!-- KM indicator -->
+    <text x="0" y="-50" 
+          font-family="system-ui, -apple-system, sans-serif" 
+          font-size="16" 
+          font-weight="bold" 
+          fill="#64748b" 
+          text-anchor="middle">KM</text>
+  </g>
+  
+  <!-- Main Title -->
+  <g transform="translate(420, 280)">
+    <text x="0" y="0" 
+          font-family="system-ui, -apple-system, sans-serif" 
+          font-size="72" 
+          font-weight="bold" 
+          fill="#f8fafc"
+          filter="url(#shadow)">Leasing Tracker</text>
+    <text x="0" y="70" 
+          font-family="system-ui, -apple-system, sans-serif" 
+          font-size="48" 
+          font-weight="600" 
+          fill="url(#blueAccent)">Card</text>
+  </g>
+  
+  <!-- Subtitle -->
+  <text x="420" y="400" 
+        font-family="system-ui, -apple-system, sans-serif" 
+        font-size="24" 
+        fill="#94a3b8">Custom Lovelace Card für Home Assistant</text>
+  
+  <!-- Feature badges -->
+  <g transform="translate(420, 460)">
+    <!-- HACS Badge -->
+    <g>
+      <rect x="0" y="0" width="100" height="36" rx="18" fill="#22c55e" opacity="0.2"/>
+      <rect x="0" y="0" width="100" height="36" rx="18" fill="none" stroke="#22c55e" stroke-width="2"/>
+      <text x="50" y="24" 
+            font-family="system-ui, sans-serif" 
+            font-size="14" 
+            font-weight="600" 
+            fill="#22c55e" 
+            text-anchor="middle">HACS</text>
+    </g>
+    
+    <!-- Lovelace Badge -->
+    <g transform="translate(120, 0)">
+      <rect x="0" y="0" width="120" height="36" rx="18" fill="#3b82f6" opacity="0.2"/>
+      <rect x="0" y="0" width="120" height="36" rx="18" fill="none" stroke="#3b82f6" stroke-width="2"/>
+      <text x="60" y="24" 
+            font-family="system-ui, sans-serif" 
+            font-size="14" 
+            font-weight="600" 
+            fill="#3b82f6" 
+            text-anchor="middle">Lovelace</text>
+    </g>
+    
+    <!-- Multi-Vehicle Badge -->
+    <g transform="translate(260, 0)">
+      <rect x="0" y="0" width="150" height="36" rx="18" fill="#eab308" opacity="0.2"/>
+      <rect x="0" y="0" width="150" height="36" rx="18" fill="none" stroke="#eab308" stroke-width="2"/>
+      <text x="75" y="24" 
+            font-family="system-ui, sans-serif" 
+            font-size="14" 
+            font-weight="600" 
+            fill="#eab308" 
+            text-anchor="middle">Multi-Fahrzeug</text>
+    </g>
+  </g>
+  
+  <!-- Status indicators on the right -->
+  <g transform="translate(1100, 200)">
+    <!-- Green status -->
+    <g transform="translate(0, 0)">
+      <circle cx="0" cy="0" r="20" fill="#22c55e" opacity="0.3"/>
+      <circle cx="0" cy="0" r="12" fill="#22c55e"/>
+      <text x="35" y="5" font-family="system-ui, sans-serif" font-size="16" fill="#64748b">Im Plan</text>
+    </g>
+    
+    <!-- Yellow status -->
+    <g transform="translate(0, 60)">
+      <circle cx="0" cy="0" r="20" fill="#eab308" opacity="0.3"/>
+      <circle cx="0" cy="0" r="12" fill="#eab308"/>
+      <text x="35" y="5" font-family="system-ui, sans-serif" font-size="16" fill="#64748b">Achtung</text>
+    </g>
+    
+    <!-- Red status -->
+    <g transform="translate(0, 120)">
+      <circle cx="0" cy="0" r="20" fill="#ef4444" opacity="0.3"/>
+      <circle cx="0" cy="0" r="12" fill="#ef4444"/>
+      <text x="35" y="5" font-family="system-ui, sans-serif" font-size="16" fill="#64748b">Über Plan</text>
+    </g>
+  </g>
+  
+  <!-- Decorative road lines at bottom -->
+  <g transform="translate(0, 580)">
+    <line x1="0" y1="0" x2="1280" y2="0" stroke="#1e3a5f" stroke-width="4"/>
+    <line x1="100" y1="20" x2="200" y2="20" stroke="#eab308" stroke-width="4" stroke-dasharray="40 20"/>
+    <line x1="280" y1="20" x2="380" y2="20" stroke="#eab308" stroke-width="4" stroke-dasharray="40 20"/>
+    <line x1="460" y1="20" x2="560" y2="20" stroke="#eab308" stroke-width="4" stroke-dasharray="40 20"/>
+    <line x1="640" y1="20" x2="740" y2="20" stroke="#eab308" stroke-width="4" stroke-dasharray="40 20"/>
+    <line x1="820" y1="20" x2="920" y2="20" stroke="#eab308" stroke-width="4" stroke-dasharray="40 20"/>
+    <line x1="1000" y1="20" x2="1100" y2="20" stroke="#eab308" stroke-width="4" stroke-dasharray="40 20"/>
+    <line x1="1180" y1="20" x2="1280" y2="20" stroke="#eab308" stroke-width="4" stroke-dasharray="40 20"/>
+    <line x1="0" y1="40" x2="1280" y2="40" stroke="#1e3a5f" stroke-width="4"/>
+  </g>
+  
+  <!-- Version hint -->
+  <text x="1240" y="600" 
+        font-family="system-ui, sans-serif" 
+        font-size="14" 
+        fill="#475569" 
+        text-anchor="end">v1.x</text>
+</svg>
