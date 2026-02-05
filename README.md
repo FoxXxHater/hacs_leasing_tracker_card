@@ -119,15 +119,6 @@ cards:
 
 ## ⚙️ Konfiguration
 
-### Via UI (Einfach)
-
-1. Dashboard bearbeiten
-2. "Karte hinzufügen"
-3. "Leasing Tracker Card" suchen
-4. Entity auswählen
-5. Im Editor anpassen
-6. Speichern
-
 ### Via YAML
 
 **Minimal:**
