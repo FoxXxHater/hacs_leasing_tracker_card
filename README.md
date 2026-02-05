@@ -3,7 +3,7 @@
 Eine custom Lovelace Card für die Leasing Tracker Integration.
 
 <p align="center">
-  <img src="banner.svg" alt="Leasing Tracker Banner" width="100%">
+  <img src="leasing_tracker_banner.svg" alt="Leasing Tracker Banner" width="100%">
 </p>
 
 <p align="center">
