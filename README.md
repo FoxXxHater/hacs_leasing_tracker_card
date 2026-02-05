@@ -198,7 +198,7 @@ show_average_day: false
 - 🔴 **< 0 km** - Rot
 
 ### Differenz
-- 🟢 **< 0** - Unter Plan (gut!)
+- 🟢 **< 0** - Unter Plan
 - 🟡 **0-1000** - Leicht über Plan
 - 🔴 **> 1000** - Deutlich über Plan
 
