@@ -67,10 +67,12 @@ class LeasingTrackerCard extends HTMLElement {
     const metricBg = this._config.metric_background || '';
     const metricBgHover = this._config.metric_background_hover || '';
     const columns = this._config.columns || 2;
+    const columnsMobile = this._config.columns_mobile || 1;
     const customStyles = `
       <style>
         :host {
           --leasing-columns: ${columns};
+          --leasing-columns-mobile: ${columnsMobile};
           ${metricBg ? `--leasing-metric-bg: ${metricBg};` : ''}
           ${metricBgHover ? `--leasing-metric-bg-hover: ${metricBgHover};` : ''}
         }
@@ -409,9 +411,17 @@ class LeasingTrackerCard extends HTMLElement {
         
         .metrics {
           display: grid !important;
-          grid-template-columns: repeat(var(--leasing-columns, 2), 1fr) !important;
+          grid-template-columns: repeat(var(--leasing-columns, 2), minmax(0, 1fr)) !important;
           gap: 12px;
           margin-bottom: 16px;
+          container-type: inline-size;
+        }
+        
+        /* Fallback für Viewport-Breite */
+        @media (max-width: 600px) {
+          .metrics {
+            grid-template-columns: repeat(var(--leasing-columns-mobile, 1), minmax(0, 1fr)) !important;
+          }
         }
         
         .metric {
@@ -422,6 +432,9 @@ class LeasingTrackerCard extends HTMLElement {
           border-radius: 8px;
           cursor: pointer;
           transition: all 0.2s;
+          min-width: 0;
+          overflow: hidden;
+          box-sizing: border-box;
         }
         
         .metric:hover {
@@ -452,6 +465,29 @@ class LeasingTrackerCard extends HTMLElement {
           font-size: 0.85em;
           color: var(--secondary-text-color);
           margin-bottom: 4px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        
+        @media (max-width: 600px) {
+          .metric-label {
+            font-size: 0.75em;
+          }
+          .metric-value {
+            font-size: 1.1em;
+          }
+          .metric-icon {
+            width: 32px;
+            height: 32px;
+          }
+          .metric-icon ha-icon {
+            --mdc-icon-size: 20px;
+          }
+          .metric {
+            padding: 10px;
+            gap: 8px;
+          }
         }
         
         .metric-value {
@@ -535,7 +571,7 @@ window.customCards.push({
 });
 
 console.info(
-  '%c  LEASING-TRACKER-CARD  %c v1.0.8 ',
+  '%c  LEASING-TRACKER-CARD  %c v1.1.0 ',
   'color: white; background: #4A90E2; font-weight: 700;',
   'color: #4A90E2; background: white; font-weight: 700;'
 );
