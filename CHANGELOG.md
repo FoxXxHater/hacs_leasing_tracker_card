@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.1.0] - 09-02-2026
+
+- Mobile UI Fix
+
 ## [1.0.8] - 05-02-2026
 
 - UI CSS Fix
