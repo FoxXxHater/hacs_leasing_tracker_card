@@ -125,7 +125,7 @@ cards:
 
 ## 📦 Installation
 
-### Via HACS (Folgt in Zukunft...)
+### Via HACS (empfohlen)
 
 1. HACS → Frontend → ⋮ → Benutzerdefinierte Repositories
 2. URL: `https://github.com/DEIN-USERNAME/leasing-tracker-card`
@@ -133,7 +133,7 @@ cards:
 4. Installieren
 5. Browser-Cache leeren (Strg + F5)
 
-### Manuell (Aktuell die einzige Möglichkeit)
+### Manuell
 
 1. Laden Sie die `leasing-tracker-card.js` herunter
 2. Kopieren Sie die Datei nach `/config/www/leasing-tracker-card/` - Den Pfad gegebenenfalls anlegen
