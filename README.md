@@ -7,11 +7,11 @@ Eine custom Lovelace Card für die Leasing Tracker Integration.
 </p>
 
 <p align="center">
-  <a href="https://github.com/foxxxhater/hacs_leasing_tracker/releases">
-    <img src="https://img.shields.io/github/release/foxxxhater/hacs_leasing_tracker_card.svg?style=flat-square" alt="GitHub Release">
+  <a href="https://github.com/foxxxhater/leasing-tracker/releases">
+    <img src="https://img.shields.io/github/release/foxxxhater/leasing-tracker-card.svg?style=flat-square" alt="GitHub Release">
   </a>
   <a href="LICENSE">
-    <img src="https://img.shields.io/github/license/foxxxhater/hacs_leasing_tracker_card.svg?style=flat-square" alt="License">
+    <img src="https://img.shields.io/github/license/foxxxhater/leasing-tracker-card.svg?style=flat-square" alt="License">
   </a>
   <a href="https://github.com/hacs/integration">
     <img src="https://img.shields.io/badge/HACS-Custom-41BDF5.svg?style=flat-square" alt="HACS">
@@ -38,7 +38,7 @@ Eine custom Lovelace Card für die Leasing Tracker Integration.
 
 ## ⚠️ Wichtig
 
-Diese Card benötigt die <a href="https://github.com/foxxxhater/hacs_leasing_tracker">**Leasing Tracker Integration**</a>!
+Diese Card benötigt die <a href="https://github.com/foxxxhater/leasing-tracker">**Leasing Tracker Integration**</a>!
 
 Installiere zuerst die Integration, dann diese Card.
 
@@ -274,9 +274,9 @@ show_remaining_days: false
 
 ## Support
 
-[GitHub Repository](https://github.com/foxxxhater/hacs_leasing_tracker_card)
-[Dokumentation](https://github.com/foxxxhater/hacs_leasing_tracker_card#readme)
-[Issues](https://github.com/foxxxhater/hacs_leasing_tracker_card/issues)
+[GitHub Repository](https://github.com/foxxxhater/leasing-tracker-card)
+[Dokumentation](https://github.com/foxxxhater/leasing-tracker-card#readme)
+[Issues](https://github.com/foxxxhater/leasing-tracker-card/issues)
 
 ## 📄 Lizenz
 
