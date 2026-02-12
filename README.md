@@ -128,7 +128,7 @@ cards:
 ### Via HACS (empfohlen)
 
 1. HACS → Frontend → ⋮ → Benutzerdefinierte Repositories
-2. URL: `https://github.com/DEIN-USERNAME/leasing-tracker-card`
+2. URL: `https://github.com/foxxxhater/leasing-tracker-card`
 3. Kategorie: Lovelace
 4. Installieren
 5. Browser-Cache leeren (Strg + F5)
